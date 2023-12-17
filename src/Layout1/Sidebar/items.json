@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "name": "Dashboard",
+      "id": 1,
+      "parent": null,
+      "icon": "ham",
+      "level": 1
+    },
+    { "name": "Access", "id": 2, "parent": null, "icon": "access", "level": 1 },
+    { "name": "Role", "id": 3, "parent": 2, "icon": "close", "level": 2 },
+    { "name": "User", "id": 4, "parent": 2, "icon": "refresh", "level": 2 },
+    { "name": "Level 1", "id": 5, "parent": null, "icon": "refresh", "level": 1 },
+    { "name": "Level 1.1", "id": 6, "parent": 5, "icon": "explode", "level": 2 },
+    { "name": "Level 2.1", "id": 7, "parent": 6, "icon": "logout", "level": 3 },
+    { "name": "Level 2.2", "id": 8, "parent": 6, "icon": "avatar1", "level": 3 },
+    { "name": "Level 3.1", "id": 9, "parent": 8, "icon": null, "level": 4 },
+    { "name": "Level 3.2", "id": 10, "parent": 8, "icon": null, "level": 4 },
+    { "name": "Level 1.2", "id": 11, "parent": 5, "icon": null, "level": 2 },
+    { "name": "Level 1.3", "id": 12, "parent": 5, "icon": null, "level": 2 },
+    { "name": "Level 1.3", "id": 12, "parent": 5, "icon": null, "level": 2 },
+    { "name": "Level 1.3", "id": 12, "parent": 5, "icon": null, "level": 2 },
+    { "name": "Level 1.3", "id": 12, "parent": 5, "icon": null, "level": 2 }
+  ]
+}
