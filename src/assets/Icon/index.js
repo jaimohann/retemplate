@@ -19,6 +19,17 @@ import {
   faCircleHalfStroke,
   faSignOut,
   faGlobe,
+  faSortUp,
+  faSortDown,
+  faCaretUp,
+  faCaretDown,
+  faCirclePlus,
+  faEye,
+  faCircleMinus,
+  faPrint,
+  faAngleLeft,
+  faAngleRight,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon1 } from "./Icon";
@@ -44,7 +55,7 @@ const StyledSVGContainer = styled.div`
 `;
 
 const aweSome = ({ fill, icon }) => (
-  <FontAwesomeIcon icon={icon} style={{ color: fill }} />
+  <FontAwesomeIcon icon={icon} spinPulse style={{ color: fill }} />
 );
 
 const custom = ({ fill, icon }) => (
@@ -79,7 +90,7 @@ export const Icon = ({
         stroke={stroke}
         strokeWidth={strokeWidth}
         isLink={isLink}
-        onClick={onClick}
+        onClick={isLink ? onClick : null}
         hasBackGround={hasBackGround}
         onMouseEnter={() => setFocus(true)}
         onMouseLeave={() => setFocus(false)}
@@ -112,10 +123,28 @@ export const Icon = ({
               return aweSome({ icon: faGauge, fill });
             case "logout":
               return aweSome({ icon: faSignOut, fill });
-              case "globe":
-                return aweSome({ icon: faGlobe, fill });
+            case "globe":
+              return aweSome({ icon: faGlobe, fill });
+            case "sortup":
+              return aweSome({ icon: faCaretUp, fill });
+            case "sortdown":
+              return aweSome({ icon: faCaretDown, fill });
+            case "add":
+              return aweSome({ icon: faCirclePlus, fill });
+            case "view":
+              return aweSome({ icon: faEye, fill });
+            case "delete":
+              return aweSome({ icon: faCircleMinus, fill });
+            case "print":
+              return aweSome({ icon: faPrint, fill });
+            case "angleleft":
+              return aweSome({ icon: faAngleLeft, fill });
+            case "angleright":
+              return aweSome({ icon: faAngleRight, fill });
             case "avatar":
-              return custom({ icon: faSignOut, fill: "green",width,height} );
+              return custom({ icon: faSignOut, fill: "green", width, height });
+            case "spinner":
+              return aweSome({ icon: faSpinner, width, height });
             default:
               return null;
           }
@@ -124,5 +153,3 @@ export const Icon = ({
     </StyledSVGContainer>
   );
 };
-
-

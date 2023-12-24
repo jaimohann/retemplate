@@ -13,7 +13,7 @@ const StyledSidebar = styled.aside`
   background-color: ${({ theme }) => theme.color.secondary};
   box-shadow: 0 0.875rem 1.75rem rgba(0, 0, 0, 0.25),
     0 0.625rem 0.625rem rgba(0, 0, 0, 0.22) !important;
-  transition: width 0.6s ease;
+    transition: width 0.6s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

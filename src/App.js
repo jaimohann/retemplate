@@ -3,7 +3,7 @@ import { AppProvider } from "./Context/Application";
 import React, { useState } from "react";
 import Layout from "./Layout";
 import { Routes, Route, Link, Navigate, BrowserRouter } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./Routing/PrivateRoute";
 import Login from "./Pages/Login";
 
 function App() {

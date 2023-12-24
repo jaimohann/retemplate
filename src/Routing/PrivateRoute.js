@@ -1,5 +1,5 @@
-import { Routes, Route, Link, Navigate } from "react-router-dom";
-import { useApp } from "./Context/Application";
+import {  Navigate } from "react-router-dom";
+
 
 const PrivateRoute = ({ children }) => {
   const user = localStorage.getItem("user");

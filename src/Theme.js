@@ -6,14 +6,17 @@ const defaultThme = {
   border: "#dee2e6",
   borderInverse:"#4b545c",
   background: "#f4f6f9",
+  highlight: "#1f69ab",
 };
 
 const darkTheme = {
-  primary: "#32292F",
-  secondary: "#85DCB",
-  text: "#E8A87C",
-  border: "#95a5a6",
-  background: "#2c3e50",
+  primary: "#000000",
+  secondary: "#353531",
+  text: "#FF9505",
+  border: "#EC4E20",
+  borderInverse:"indigo",
+  background: "yellow",
+  highlight: "#016FB9",
 };
 
 const lightTheme = {

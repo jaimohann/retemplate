@@ -7,8 +7,8 @@ const StyledContainer = styled.div`
   margin: ${({ menuLink }) => (menuLink ? "0 .625rem 0 .625rem" : "0")};
   padding: ${({ height, menuLink }) =>
     height
-      ? height + .5 + "rem " + (menuLink ? ".625rem" : "1.25rem")
-      : .5 + "rem " + (menuLink ? ".625rem" : "1.25rem")};
+      ? height + 0.5 + "rem " + (menuLink ? ".625rem" : "1.25rem")
+      : 0.5 + "rem " + (menuLink ? ".625rem" : "1.25rem")};
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -22,29 +22,60 @@ const StyledContainer = styled.div`
   color: ${({ theme }) => theme.color.text};
   cursor: ${({ isLink }) => (isLink ? "pointer" : "default")};
 
-  transition: ${({ collapse }) =>
-    collapse ? "width 0.1s ease" : "opacity 8.0s ease"};
-
   @media (max-width: 1920px) {
     width: ${({ collapse, menuLink }) =>
-      collapse ? menuLink ? "3.75rem": "5rem" : menuLink ? "14.375rem" : "15.625rem"};
+      collapse
+        ? menuLink
+          ? "3.75rem"
+          : "5rem"
+        : menuLink
+        ? "14.375rem"
+        : "15.625rem"};
   }
   @media (max-width: 1280px) {
     width: ${({ collapse, menuLink }) =>
-      collapse ? menuLink ? "3.75rem": "5rem" : menuLink ? "14.375rem" : "15.625rem"};
+      collapse
+        ? menuLink
+          ? "3.75rem"
+          : "5rem"
+        : menuLink
+        ? "14.375rem"
+        : "15.625rem"};
   }
   @media (max-width: 1024px) {
     width: ${({ collapse, menuLink }) =>
-      collapse ? menuLink ? "3.75rem": "5rem" : menuLink ? "14.375rem" : "15.625rem"};
+      collapse
+        ? menuLink
+          ? "3.75rem"
+          : "5rem"
+        : menuLink
+        ? "14.375rem"
+        : "15.625rem"};
   }
   @media (max-width: 767px) {
     width: ${({ collapse, menuLink }) =>
-      collapse ? menuLink ? "3.75rem": "5rem" : menuLink ? "14.375rem" : "15.625rem"};
+      collapse
+        ? menuLink
+          ? "3.75rem"
+          : "5rem"
+        : menuLink
+        ? "14.375rem"
+        : "15.625rem"};
   }
   @media (max-width: 480px) {
     width: ${({ collapse, menuLink }) =>
       collapse ? "0" : menuLink ? "14.375rem" : "15.625rem"};
   }
+
+  transition: ${({ collapse }) =>
+    collapse ? "width 0.1s ease" : "opacity 0.6s ease"};
+
+  ${({ selected, theme }) =>
+    selected &&
+    `
+    background-color: ${theme.color.highlight};
+    border-radius:5px;
+    `};
 
   ${({ menuLink, theme }) =>
     menuLink &&
@@ -91,32 +122,42 @@ const Collapsible = ({
   borderBottom,
   menuLink,
   menuLinkRoute,
+  selected,
 }) => {
   return (
-    <StyledContainer
-      collapse={collapse}
-      theme={theme}
-      isLink={isLink}
-      onClick={onClick}
-      height={height}
-      borderTop={borderTop}
-      borderBottom={borderBottom}
-      menuLink={menuLink}
+    <Link
+      to={menuLinkRoute ? "/" + menuLinkRoute : ""}
+      style={{ textDecoration: "none", color: "inherit" }}
     >
-      <StyledLogo theme={theme} background={logoBackground} collapse={collapse}>
-        {logo ? (
-          <StyledImage
-            src={logo}
-            background={logoBackground}
-            collapse={collapse}
-          ></StyledImage>
-        ) : (
-          <Icon type={icon} height={"40"} width={"40"} isLink={true}></Icon>
-        )}
-      </StyledLogo>
-      {!collapse && title && (
-        <StyledTitle collapse={collapse} size={fontSize} weight={weight}>
-          {menuLinkRoute ? (
+      <StyledContainer
+        collapse={collapse}
+        theme={theme}
+        isLink={isLink}
+        onClick={onClick}
+        height={height}
+        borderTop={borderTop}
+        borderBottom={borderBottom}
+        menuLink={menuLink}
+        selected={selected}
+      >
+        <StyledLogo
+          theme={theme}
+          background={logoBackground}
+          collapse={collapse}
+        >
+          {logo ? (
+            <StyledImage
+              src={logo}
+              background={logoBackground}
+              collapse={collapse}
+            ></StyledImage>
+          ) : (
+            <Icon type={icon} height={"40"} width={"40"} isLink={true}></Icon>
+          )}
+        </StyledLogo>
+        {!collapse && title && (
+          <StyledTitle collapse={collapse} size={fontSize} weight={weight}>
+            {/* {menuLinkRoute ? (
             <Link
               to={"/" + menuLinkRoute}
               style={{ textDecoration: "none", color: "inherit" }}
@@ -125,10 +166,12 @@ const Collapsible = ({
             </Link>
           ) : (
             title
-          )}
-        </StyledTitle>
-      )}
-    </StyledContainer>
+          )} */}
+            {title}
+          </StyledTitle>
+        )}
+      </StyledContainer>
+    </Link>
   );
 };
 
