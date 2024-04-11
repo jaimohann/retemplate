@@ -37,7 +37,7 @@ import { FontAwesomeIcon1 } from "./Icon";
 const StyledSVG = styled.svg`
   fill: ${({ fill }) => fill};
   padding: 0px 8px 0px 8px;
-  cursor: ${({ isLink }) => (isLink ? "pointer" : "auto")};
+  cursor: ${({ islink }) => (islink ? "pointer" : "auto")};
   &:hover {
     width: ${({ hasBackGround, width }) =>
       `${hasBackGround ? width - 1 : width}px`};
@@ -47,15 +47,15 @@ const StyledSVG = styled.svg`
 `;
 
 const StyledSVGContainer = styled.div`
-  cursor: ${({ isLink }) => (isLink ? "pointer" : "auto")};
+  cursor: ${({ islink }) => (islink ? "pointer" : "auto")};
   border-radius: ${({ backGroundStyle }) =>
     backGroundStyle == "round" ? "50%" : "4px"};
   background-color: ${({ backGroundColor }) => backGroundColor};
   padding: ${({ hasBackGround }) => (hasBackGround ? "1px" : "0px")};
 `;
 
-const aweSome = ({ fill, icon }) => (
-  <FontAwesomeIcon icon={icon} spinPulse style={{ color: fill }} />
+const aweSome = ({ fill, icon, spin, style }) => (
+  <FontAwesomeIcon icon={icon} spinPulse={spin} style={style} />
 );
 
 const custom = ({ fill, icon }) => (
@@ -69,16 +69,17 @@ export const Icon = ({
   fill,
   stroke,
   strokeWidth,
-  isLink,
+  islink,
   onClick,
   hasBackGround,
   backGroundStyle,
   backGroundColor,
+  style,
 }) => {
   const [focus, setFocus] = useState(false);
   return (
     <StyledSVGContainer
-      isLink={isLink}
+      islink={islink}
       hasBackGround={hasBackGround}
       backGroundStyle={backGroundStyle}
       backGroundColor={backGroundColor}
@@ -89,8 +90,8 @@ export const Icon = ({
         fill={fill}
         stroke={stroke}
         strokeWidth={strokeWidth}
-        isLink={isLink}
-        onClick={isLink ? onClick : null}
+        islink={islink}
+        onClick={islink ? onClick : null}
         hasBackGround={hasBackGround}
         onMouseEnter={() => setFocus(true)}
         onMouseLeave={() => setFocus(false)}
@@ -98,53 +99,55 @@ export const Icon = ({
         {(() => {
           switch (type) {
             case "close":
-              return aweSome({ icon: faClose, fill });
+              return aweSome({ icon: faClose, fill, style });
             case "refresh":
-              return aweSome({ icon: faRefresh, fill });
+              return aweSome({ icon: faRefresh, fill, style });
             case "settings":
-              return aweSome({ icon: faGear, fill });
+              return aweSome({ icon: faGear, fill, style });
             case "explode":
-              return aweSome({ icon: faEnvelope, fill });
+              return aweSome({ icon: faEnvelope, fill, style });
             case "ham":
-              return aweSome({ icon: faBars, fill });
+              return aweSome({ icon: faBars, fill, style });
             case "link":
-              return aweSome({ icon: faLink, fill });
+              return aweSome({ icon: faLink, fill, style });
             case "access":
-              return aweSome({ icon: faCheck, fill });
+              return aweSome({ icon: faCheck, fill, style });
             case "crescent":
-              return aweSome({ icon: faCircleHalfStroke, fill });
+              return aweSome({ icon: faCircleHalfStroke, fill, style });
             case "sunshine":
-              return aweSome({ icon: faSun, fill });
+              return aweSome({ icon: faSun, fill, style });
             case "role":
-              return aweSome({ icon: faUsersBetweenLines, fill });
+              return aweSome({ icon: faUsersBetweenLines, fill, style });
             case "user":
-              return aweSome({ icon: faUser, fill });
+              return aweSome({ icon: faUser, fill, style });
             case "dash":
-              return aweSome({ icon: faGauge, fill });
+              return aweSome({ icon: faGauge, fill, style });
             case "logout":
-              return aweSome({ icon: faSignOut, fill });
+              return aweSome({ icon: faSignOut, fill, style });
             case "globe":
-              return aweSome({ icon: faGlobe, fill });
+              return aweSome({ icon: faGlobe, fill, style });
             case "sortup":
-              return aweSome({ icon: faCaretUp, fill });
+              return aweSome({ icon: faCaretUp, fill, style });
             case "sortdown":
-              return aweSome({ icon: faCaretDown, fill });
+              return aweSome({ icon: faCaretDown, fill, style });
             case "add":
-              return aweSome({ icon: faCirclePlus, fill });
+              return aweSome({ icon: faCirclePlus, fill, style });
             case "view":
-              return aweSome({ icon: faEye, fill });
+              return aweSome({ icon: faEye, fill, style });
             case "delete":
-              return aweSome({ icon: faCircleMinus, fill });
+              return aweSome({ icon: faCircleMinus, fill, style });
             case "print":
-              return aweSome({ icon: faPrint, fill });
+              return aweSome({ icon: faPrint, fill, style });
             case "angleleft":
-              return aweSome({ icon: faAngleLeft, fill });
+              return aweSome({ icon: faAngleLeft, fill, style });
             case "angleright":
-              return aweSome({ icon: faAngleRight, fill });
+              return aweSome({ icon: faAngleRight, fill, style });
+            case "circleplus":
+                return aweSome({ icon: faCirclePlus, fill, style });              
             case "avatar":
               return custom({ icon: faSignOut, fill: "green", width, height });
             case "spinner":
-              return aweSome({ icon: faSpinner, width, height });
+              return <FontAwesomeIcon icon={faSpinner} spinPulse />;
             default:
               return null;
           }

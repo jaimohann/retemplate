@@ -1,7 +1,9 @@
 import styled, { useTheme } from "styled-components";
 
+
+
 const StyledTd = styled.td`
-  padding: 0.331rem;
+  padding: 0.4375rem 0rem;
   border-bottom: 1px solid ${({ theme }) => theme.color.border};
   box-sizing: border-box;
   width: ${({ colWidth }) =>
@@ -27,7 +29,7 @@ const TdContainer = styled.div`
   colWidth}; /* Set a fixed width for the header cells */
 `;
 
-const Td = ({ key, title, children, hidden, colWidth, align }) => {
+const Td = ({ key, children, hidden, colWidth, align }) => {
   const { theme } = useTheme();
   return (
     <StyledTd

@@ -1,10 +1,13 @@
 import React from "react";
 import styled, { useTheme } from "styled-components";
 import { Icon } from "../../../assets/Icon";
+import { useDataTable } from "./DTContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const PagerControl = styled.div`
-  margin: 0px 2px 0px 2px;
-  padding: 18px;
+  margin: 2px;
+  padding: ${({ theme, active }) => (active ? "17px" : "18px")};
   height: 10px;
   width: 10px;
   background-color: ${({ theme }) => theme.color.text};
@@ -23,7 +26,8 @@ const PagerControl = styled.div`
     box-shadow: 0px 3px 5px ${({ theme }) => theme.color.borderInverse};
   }
 
-
+  ${({ theme, active }) =>
+    active && `border: 1px solid ${theme.color.borderInverse}`};
 `;
 
 const PagerContainer = styled.div`
@@ -40,16 +44,16 @@ const PagerControlContainer = styled.div`
   align-content: center;
   justify-content: center;
   align-items: center;
+  min-height: 40px;
 `;
 
-const Pager = ({
-
-  currentPage,
-  length,
-  handlePageChange,
-  totRecords,
-}) => {
+const Pager = ({ totRecords }) => {
   const { theme } = useTheme();
+  const { currentPage, setCurrentPage, busy, data } = useDataTable();
+  const length = Object.keys(data).length;
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
   return (
     <PagerContainer>
       <PagerControlContainer>
@@ -57,27 +61,33 @@ const Pager = ({
           type="angleleft"
           width={30}
           height={30}
-          isLink={currentPage <= 1 ? false : true}
+          islink={currentPage <= 1 ? false : true}
           onClick={() => handlePageChange(currentPage - 1)}
         />
         {Array.from({
           length: length > 5 ? 5 : length,
         }).map((_, index) => (
           <PagerControl
-            onClick={() => handlePageChange(index)}
+            onClick={() => handlePageChange(length - 5 + (index + 1))}
             active={
               length <= 5 ? index + 1 : length - 5 + index + 1 == currentPage
             }
             theme={theme}
           >
-            {length <= 5 ? index + 1 : length - 5 + index + 1}
+            {busy ? (
+              <FontAwesomeIcon icon={faSpinner} spinPulse />
+            ) : length <= 5 ? (
+              index + 1
+            ) : (
+              length - 5 + (index + 1)
+            )}
           </PagerControl>
         ))}
         <Icon
           type="angleright"
           width={30}
           height={30}
-          isLink={currentPage >= length ? (!totRecords ? true : false) : true}
+          islink={currentPage >= length ? (!totRecords ? true : false) : true}
           onClick={() => handlePageChange(currentPage + 1)}
         />
       </PagerControlContainer>
@@ -86,4 +96,3 @@ const Pager = ({
 };
 
 export default Pager;
-

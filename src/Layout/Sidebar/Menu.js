@@ -40,7 +40,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch("./items.json"); // Update the path to your JSON file
+        const response = await fetch("/items.json"); // Update the path to your JSON file
         const data = await response.json();
         setItems(data.items);
         setExpanded(
@@ -81,7 +81,7 @@ const Menu = () => {
               theme={theme}
               icon={item.icon || "link"}
               title={"" + " ".repeat(item.level) + " " + item.name}
-              isLink={true}
+              islink
               menuLink={true}
               height={-0.2}
               onClick={(e) => handleClick(e, item.id)}
@@ -93,7 +93,7 @@ const Menu = () => {
             theme={theme}
             icon={item.icon || "link"}
             title={" " + "  ".repeat(item.level) + " " + item.name}
-            isLink={true}
+            islink
             menuLink={true}
             height={-0.2}
             menuLinkRoute={item.link}

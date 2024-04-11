@@ -6,15 +6,10 @@ import Header from "./Header";
 
 import { useApp } from "../Context/Application";
 import themes from "../Theme";
-import { Route, Routes } from "react-router-dom";
 
-import Login from "../Pages/Login";
-import Register from "../Pages/Register";
-import Dashboard from "../Pages/Dashboard";
-import User from "../Pages/User";
-import Role from "../Pages/Role/Role";
+import { DialogueProvider } from "../Context/Dialogue";
 
-import Router from "../Routing/Router";
+import Routes from "../Routing/AppRoutes";
 
 const StyledContainer = styled(Container)`
   padding: 0rem;
@@ -27,34 +22,14 @@ const Layout = () => {
 
   return (
     <ThemeProvider theme={themes[activeTheme]}>
-      <LayoutProvider>
-        <StyledContainer fluid theme={themes[activeTheme]}>
-          <Header></Header>
-          <Routes>
-            <Route
-              path="/"
-              element={<Router component={<Dashboard />} protect={true} />}
-            />
-            <Route
-              path="/dashboard"
-              element={<Router component={<Dashboard />} protect={true} />}
-            />
-            <Route
-              path="/role"
-              element={<Router component={<Role />} protect={true} />}
-            />
-            <Route
-              path="/user"
-              element={<Router component={<User />} protect={true} />}
-            />
-            <Route path="/login" element={<Router component={<Login />} />} />
-            <Route
-              path="/register"
-              element={<Router component={<Register />} />}
-            />
-          </Routes>
-        </StyledContainer>
-      </LayoutProvider>
+      <DialogueProvider>
+        <LayoutProvider>
+          <StyledContainer fluid theme={themes[activeTheme]}>
+            <Header></Header>
+            <Routes />
+          </StyledContainer>
+        </LayoutProvider>
+      </DialogueProvider>
     </ThemeProvider>
   );
 };

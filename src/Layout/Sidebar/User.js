@@ -13,12 +13,11 @@ const User = () => {
       theme={theme}
       logo={avatar}
       title={"Mark Henry"}
-      logoBackground={false}
-      isLink={true}
+      islink
       fontSize={1}
       weight={"600"}
       height={1}
-      borderBottom={true}
+      borderottom
       margin={true}
     ></Collapsible>
   );

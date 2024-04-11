@@ -6,15 +6,17 @@ import Footer from "../Layout/Footer";
 
 
 const Router = ({ component, protect }) => {
-    return protect ? (
-      <PrivateRoute>
-        <Sidebar />
-        <Content>{component}</Content>
-        <Footer />
-      </PrivateRoute>
-    ) : (
+  return protect ? (
+    <PrivateRoute>
+      <Sidebar />
       <Content>{component}</Content>
-    );
-  };
+      <Footer />
+    </PrivateRoute>
+  ) : (
+    <Content protect={protect}>
+      {component} 
+    </Content>
+  );
+};
 
 export default Router;

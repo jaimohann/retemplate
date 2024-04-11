@@ -50,19 +50,45 @@ const StyledTitle = styled.span`
 const Header = () => {
   const { collapse, setCollapse } = useLayout();
   const { theme } = useTheme();
-  const { user, getUser } = useApp();
-  return getUser() ? (
+  const { user, setActiveTheme } = useApp();
+  return user ? (
     <StyledHeader theme={theme} collapse={collapse} user={user}>
       <Container fluid style={{ padding: "0px" }}>
         <Nav activeKey="/home">
           <Nav.Item>
-            <Icon
-              type="ham"
-              height={40}
-              width={40}
-              isLink={true}
-              onClick={() => setCollapse(!collapse)}
-            ></Icon>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <Icon
+                type="ham"
+                height={40}
+                width={40}
+                islink={"true"}
+                onClick={() => setCollapse(!collapse)}
+              ></Icon>
+              <div>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="default"
+                    value="default"
+                    onChange={(e) => {
+                      setActiveTheme(e.target.value);
+                    }}
+                  ></input>
+                  default
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="sunrise"
+                    value="sunrise"
+                    onChange={(e) => {
+                      setActiveTheme(e.target.value);
+                    }}
+                  ></input>
+                  sunrise
+                </label>
+              </div>
+            </div>
           </Nav.Item>
         </Nav>
       </Container>
@@ -81,6 +107,11 @@ const Header = () => {
           </StyledTitle>
         </Nav.Item>
       </Nav>
+      <Nav.Item>
+        <StyledTitle size={1.25} weight={300}>
+          <Link to={`/register1`}>{"Register1"}</Link>
+        </StyledTitle>
+      </Nav.Item>
     </StyledSignedOutHeader>
   );
 };

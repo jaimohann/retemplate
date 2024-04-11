@@ -13,10 +13,10 @@ const Brand = () => {
       theme={theme}
       logo={logo}
       title={"The Small g"}
-      logoBackground={true}
-      isLink={true}
+      logobackground
+      islink
       fontSize={1.25}
-      borderBottom={true}
+      borderbottom={true}
     ></Collapsible>
   );
 };

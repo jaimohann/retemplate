@@ -16,11 +16,11 @@ const StyledContainer = styled.div`
 
   border-top: ${({ borderTop, theme }) =>
     borderTop ? " .0625rem " + " solid " + theme.color.borderInverse : "0"};
-  border-bottom: ${({ borderBottom, theme }) =>
-    borderBottom ? " .0625rem " + " solid " + theme.color.borderInverse : "0"};
+  border-bottom: ${({ borderbottom, theme }) =>
+    borderbottom ? " .0625rem " + " solid " + theme.color.borderInverse : "0"};
 
   color: ${({ theme }) => theme.color.text};
-  cursor: ${({ isLink }) => (isLink ? "pointer" : "default")};
+  cursor: ${({ islink }) => (islink ? "pointer" : "default")};
 
   @media (max-width: 1920px) {
     width: ${({ collapse, menuLink }) =>
@@ -80,7 +80,7 @@ const StyledContainer = styled.div`
   ${({ menuLink, theme }) =>
     menuLink &&
     `&:hover {
-      background-color: ${theme.color.borderInverse};
+      background-color: ${theme.color.highlight};
       border-radius: 5px;
     `}
 `;
@@ -111,15 +111,15 @@ const Collapsible = ({
   theme,
   logo,
   title,
-  logoBackground,
+  logobackground,
   icon,
-  isLink,
+  islink,
   fontSize,
   weight,
   onClick,
   height,
   borderTop,
-  borderBottom,
+  borderbottom,
   menuLink,
   menuLinkRoute,
   selected,
@@ -132,27 +132,27 @@ const Collapsible = ({
       <StyledContainer
         collapse={collapse}
         theme={theme}
-        isLink={isLink}
+        islink={islink}
         onClick={onClick}
         height={height}
         borderTop={borderTop}
-        borderBottom={borderBottom}
+        borderbottom={borderbottom}
         menuLink={menuLink}
         selected={selected}
       >
         <StyledLogo
           theme={theme}
-          background={logoBackground}
+          background={logobackground}
           collapse={collapse}
         >
           {logo ? (
             <StyledImage
               src={logo}
-              background={logoBackground}
+              background={logobackground}
               collapse={collapse}
             ></StyledImage>
           ) : (
-            <Icon type={icon} height={"40"} width={"40"} isLink={true}></Icon>
+            <Icon type={icon} height={"40"} width={"40"} islink></Icon>
           )}
         </StyledLogo>
         {!collapse && title && (

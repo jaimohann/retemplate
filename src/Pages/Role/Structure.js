@@ -1,4 +1,4 @@
-export const Search = {
+export const search = {
   columns: [
     {
       name: "id",
@@ -46,9 +46,37 @@ export const Search = {
   actions: {
     name: "actions",
     title: "Actions",
-    required: false,
+    required: true,
     width: "100px",
     align: "center",
     items: ["modify", "delete", "print"],
   },
+};
+
+export const form = {
+  formName:"login",
+  title: "Login",
+  submit: {
+    label: "Login",
+    actionEvent: "login",
+  },
+  cancel: { label: "", actionEvent: "logincancel" },
+  controls: [
+    {
+      label: "E-Mail",
+      id: "memberLogin",
+      type: "email",
+      placeholder: "E-mail",
+      name: "memberLogin",
+      validators: ["required=true"],
+    },
+    {
+      label: "Password",
+      id: "memberPwd",
+      type: "password",
+      placeholder: "password",
+      name: "memberPwd",
+      validators: ["required=true", "minimum=10", "maximum=30"],
+    },
+  ],
 };

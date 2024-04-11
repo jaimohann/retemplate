@@ -7,6 +7,9 @@ const defaultThme = {
   borderInverse:"#4b545c",
   background: "#f4f6f9",
   highlight: "#1f69ab",
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const darkTheme = {
@@ -17,6 +20,9 @@ const darkTheme = {
   borderInverse:"indigo",
   background: "yellow",
   highlight: "#016FB9",
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const lightTheme = {
@@ -25,14 +31,22 @@ const lightTheme = {
   text: "#2c3e50",
   border: "#95a5a6",
   background: "#ecf0f1",
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const sunriseTheme = {
-  primary: "#f39c12",
-  secondary: "#e74c3c",
-  text: "#2c3e50",
-  border: "#bdc3c7",
-  background: "#f8c471",
+  primary: "#dfe6e9",
+  secondary: "#184e5e",
+  text: "#FFFFFFCC",
+  border: "#8e8741",
+  borderInverse:"#659ebc",
+  background: "#fcfeff",
+  highlight: "#daad86",
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const sunsetTheme = {
@@ -41,6 +55,9 @@ const sunsetTheme = {
   text: "#2c3e50",
   border: "#bdc3c7",
   background: "#f08080",
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const blueSkyTheme = {
@@ -49,6 +66,9 @@ const blueSkyTheme = {
   text: "#000",
   border: "#B0E0E6", // Powder Blue
   background: "#87CEFA", // Light Sky Blue
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const forestTheme = {
@@ -57,6 +77,9 @@ const forestTheme = {
   text: "#2E8B57", // Sea Green
   border: "#556B2F", // Dark Olive Green
   background: "#6B8E23", // Olive Drab
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const desertTheme = {
@@ -65,6 +88,9 @@ const desertTheme = {
   text: "#8B4513", // Saddle Brown
   border: "#A0522D", // Sienna
   background: "#F5DEB3", // Wheat
+  success:"#198754",
+  danger:"#dc3545",
+  warning:"#ffc107"
 };
 
 const defaultTheme = {

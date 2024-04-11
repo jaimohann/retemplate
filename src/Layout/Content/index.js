@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useLayout } from "../../Context/Layout";
 import { useApp } from "../../Context/Application";
-import { Outlet, Route, Routes } from "react-router-dom";
-import Router from "../../Routing/Router";
 
 const StyledContent = styled.div`
   margin-left: ${({ collapse }) => (collapse ? "5rem" : "250px")};
@@ -45,19 +43,14 @@ const StyledContent = styled.div`
   }
 `;
 
-const Content = ({ children }) => {
+const Content = ({ children, protect }) => {
   const { collapse } = useLayout();
   const { user, setUser } = useApp();
 
-  return (
-    <StyledContent collapse={collapse}>
-      {children}
-
-      <Routes>
-        <Route path="/role/edit" element={<Router component={<div />} protect={true} />}>
-        </Route>
-      </Routes>
-    </StyledContent>
+  return !user ? (
+    <div>{children}</div>
+  ) : (
+    <StyledContent collapse={collapse}>{children}</StyledContent>
   );
 };
 
